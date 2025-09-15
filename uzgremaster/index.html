@@ -6,6 +6,11 @@
     <title>Unity Web Player | UZG Remastered</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
+    <style>
+      body {
+        overflow: hidden;
+      }
+    </style>
   </head>
   <body>
     <div id="unity-container" class="unity-desktop">
@@ -17,7 +22,7 @@
         </div>
       </div>
       <div id="unity-warning"> </div>
-      <div id="unity-footer">
+      <div id="unity-footer" style="display: none;">
         <div id="unity-logo-title-footer"></div>
         <div id="unity-fullscreen-button"></div>
         <div id="unity-build-title">UZG Remastered</div>
@@ -98,8 +103,10 @@
 
       } else {
         // Desktop style: Render the game canvas in a window that can be maximized to fullscreen:
-        canvas.style.width = "960px";
-        canvas.style.height = "600px";
+        setTimeout(() => {
+          canvas.style.width = window.innerWidth + 'px';
+          canvas.style.height = window.innerHeight + 'px';
+        }, 1000);
       }
 
       canvas.style.background = "url('" + buildUrl + "/UZGR WebGL.jpg') center / cover";
